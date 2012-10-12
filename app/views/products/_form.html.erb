@@ -1,0 +1,55 @@
+<%= form_for @product, :html => { :class => 'form-horizontal' } do |f| %>
+
+  <div class="control-group">
+    <%= f.label :title, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :title, :class => 'text_field' %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :description, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_area :description, :cols => 20, :rows => 10, :class => 'text_area' %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :activity, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.check_box :activity, :class => 'check_box' %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :price, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :price, :class => 'text_field' %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :image_link, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :image_link, :class => 'text_field' %>
+    </div>
+  </div>
+
+<div class="control-group">
+  <%= f.label :Categories, :class => 'control-label' %>
+  <% for category in Category.find(:all) %>
+  <div class="controls">
+    <%= check_box_tag "product[category_ids][]",
+                      category.id,
+                      @product.categories.include?(category) %>
+                      <%= category.name %>
+  </div>
+  <% end %>
+</div>
+
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                products_path, :class => 'btn' %>
+  </div>
+<% end %>

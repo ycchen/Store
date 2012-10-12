@@ -1,0 +1,30 @@
+
+<table class="table table-striped">
+	<caption>Order item count:(<%= @order.order_items.count %>)</caption>
+	<thead>
+		<tr>
+			<th>Title</th>
+			<!-- <th>Image</th> -->
+			<th>Unit Price</th>
+			<th>Quantity</th>
+			<th>Total Price</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @order.order_items.each do |item| %>
+			<tr>
+				<td><%= item.product.title %></td>
+				<!-- <td><%= link_to image_tag(item.product.image_link , :size=> "100x100"), product_path(item.product.id) %></td> -->
+				<td><%= number_to_currency(item.unit_price) %></td>
+				<td><%= item.quantity %></td>
+				<td style="text-align: center;"><%= number_to_currency(item.price) %></td>
+			</tr>
+		<% end %>
+		<tr>
+			<td colspan="3" style="text-align: right;">Total</td>
+			<td style="text-align: center;"><%= number_to_currency(@order.total) %></td>
+		</tr>
+	</tbody>
+</table>
+
+<%= link_to 'Empty Cart',@order , :confirm => 'Are you sure?', :method => :delete, :class => "btn btn-danger" %>
