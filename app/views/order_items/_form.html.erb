@@ -1,0 +1,13 @@
+
+<%= form_for @order_item do |f| %>
+	<div class="control-group">
+		<%= f.label :quantity, :class => "control_label" %>
+		<div class="controls">
+			<%= f.text_field :quantity, :class => "text_field"  %>	
+		</div>
+	</div>	
+	<div class="form-actions">
+		<%= f.submit "Update Quantity", :class => "btn btn-primary"%>
+	</div>
+	
+<% end %>

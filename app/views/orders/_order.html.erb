@@ -18,11 +18,15 @@
 				<td><%= number_to_currency(item.unit_price) %></td>
 				<td><%= item.quantity %></td>
 				<td style="text-align: center;"><%= number_to_currency(item.price) %></td>
+				<td>
+					<%= link_to "Edit", edit_order_item_path(item), :class => "btn btn-mini" %>
+					<%= link_to 'Remove', order_item_path(item), :confirm => 'Are you sure?', :method => :delete, :class => "btn btn-mini btn-danger" %></td>
 			</tr>
 		<% end %>
 		<tr>
 			<td colspan="3" style="text-align: right;">Total</td>
 			<td style="text-align: center;"><%= number_to_currency(@order.total) %></td>
+			<td>&nbsp;</td>
 		</tr>
 	</tbody>
 </table>

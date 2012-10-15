@@ -3,7 +3,13 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @products = Product.all
+    
+    
+    if params[:search] && params[:search].length > 0
+      @products = Product.where(["title LIKE ?",   "%#{params[:search]}%"])
+    else
+      @products = Product.all  
+    end
 
     respond_to do |format|
       format.html # index.html.erb

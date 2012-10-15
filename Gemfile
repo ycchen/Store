@@ -14,7 +14,7 @@ gem 'jquery-rails'
 # gem 'bootstrap-sass'
 
 gem 'bcrypt-ruby', :require => 'bcrypt'
-
+gem 'simple_form'
 
 #Flexible authentication solution for Rails with Warden
 # gem 'devise'

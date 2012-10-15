@@ -23,16 +23,29 @@ class OrderItemsController < ApplicationController
   end
 
   def edit
-  	@order_item = @order.order_item.find(params[:id])
+  	@order_item = @order.order_items.find(params[:id])
 
   end
 
   def update
-  	@order_item = @order.order_item.find(params[:id])
+  	@order_item = @order.order_items.find(params[:id])
+
+    respond_to do |format|
+      if @order_item.update_attributes(params[:order_item])
+        format.html {redirect_to @order, notice: 'Quantity was successfully updated'}
+        format.json {head :no_content}
+      else
+        format.html {render action: "edit"}
+        format.json {render json: @order_item.errors, status: :unprocessable_entity}
+      end
+    end
+
   end
 
   def destroy
-  	@order.order_item.destroy(params[:id])
+    # render params[:id].inspect + " hello"
+    # render @order.inspect.to_yaml
+  	@order.order_items.destroy(params[:id])
   	redirect_to @order, :notice => "Successfully destroy order item."
   end
 end
