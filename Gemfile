@@ -15,6 +15,8 @@ gem 'jquery-rails'
 
 gem 'bcrypt-ruby', :require => 'bcrypt'
 gem 'simple_form'
+gem 'best_in_place'
+gem 'friendly_id', "~> 4.0.1"
 
 #Flexible authentication solution for Rails with Warden
 # gem 'devise'

@@ -1,6 +1,9 @@
 class Product < ActiveRecord::Base
-  attr_accessible :activity, :description, :image_link, :price, :title, :category_ids
-  
+	attr_accessible :activity, :description, :image_link, :price, :title, :category_ids
+ 	
+ 	extend FriendlyId
+  	friendly_id :title, use: :slugged
+
   validates_presence_of :title, :description
   validates_numericality_of :price, :greater_than => 0
   validates_uniqueness_of :title
@@ -20,5 +23,8 @@ class Product < ActiveRecord::Base
 		end
 	end
 
+	# def to_param
+	# 	"#{id} #{title}".parameterize
+	# end
   
 end

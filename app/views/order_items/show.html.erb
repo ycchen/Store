@@ -1,0 +1,9 @@
+
+	<div class="control-group">
+		<br/>
+		<div class="controls">
+		Quantity:	<%= best_in_place @order_item, :quantity %>
+		</div>
+	</div>	
+	
+	<%= link_to "Back to Order", order_path(@order), :class => "btn" %>

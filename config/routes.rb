@@ -1,20 +1,4 @@
 StoreEngine::Application.routes.draw do
-  
-  get "order_items/create"
-
-  get "order_items/edit"
-
-  get "order_items/update"
-
-  get "order_items/destroy"
-
-  get "orderitem/create"
-
-  get "orderitem/edit"
-
-  get "orderitem/update"
-
-  get "orderitem/destroy"
 
   match 'user/edit' => 'users#edit', :as => :edit_current_user
   match 'signup' => 'users#new', :as => :signup
