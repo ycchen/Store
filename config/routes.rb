@@ -7,8 +7,8 @@ StoreEngine::Application.routes.draw do
 
   resources :sessions
   resources :users
-  resources :categories
   resources :products
+  resources :categories
   resources :orders
   resources :order_items
 

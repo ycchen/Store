@@ -21,7 +21,7 @@
   <dt><strong><%= model_class.human_attribute_name(:categories) %>:</strong></dt>
   <dd>
     <% @product.categories.each do |c| %>
-      <%= link_to "#{c.name}", category_path %> 
+      <%= link_to "#{c.name}", category_path(c.name) %> 
     <% end %>
   </dd>  
 </dl>

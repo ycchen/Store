@@ -2,6 +2,8 @@ class ApplicationController < ActionController::Base
   include ControllerAuthentication
   protect_from_forgery
   
+  before_filter :lookup_order
+  
   # This is to enable those methods are avariable for all views
   helper_method :admin_authorize
   helper_method :admin?

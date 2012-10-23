@@ -1,5 +1,6 @@
 class CategoriesController < ApplicationController
-  before_filter :admin_authorize
+  before_filter :admin_authorize, :except => [:index, :show]
+ 
   # GET /categories
   # GET /categories.json
   def index
@@ -15,6 +16,7 @@ class CategoriesController < ApplicationController
   # GET /categories/1.json
   def show
     @category = Category.find(params[:id])
+    @products = @category.products
 
     respond_to do |format|
       format.html # show.html.erb

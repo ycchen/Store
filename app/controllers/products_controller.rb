@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_filter :lookup_order
+  # before_filter :lookup_order
   # GET /products
   # GET /products.json
   def index

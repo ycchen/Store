@@ -5,6 +5,60 @@
   <%= @category.name %>
 </p>
 
+<table class="table table-striped">
+	<caption>Products belongs to Category of <strong><%= @category.name %></strong></caption>
+	<thead>
+		<tr>
+			<th>Title</th>
+			<th>Description</th>
+			<th>&nbsp;</th>
+			<th>Price</th>
+			<th>Image</th>
+			<th>&nbsp;</th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<% @products.each do |product| %>
+		<tr>
+			<td>
+				<div>
+					<%= product.title %>	
+				</div>
+			</td>
+			<td>
+				<div>
+					<%= product.description %>
+				</div>
+			</td>
+			<td>
+				<div>
+					<%= product.activity %>
+				</div>
+			</td>
+			<td>
+				<div>
+					<%= number_to_currency(product.price) %>
+				</div>
+			</td>
+
+			<td>
+				<div>
+					<%= image_tag(product.image_link, :size => "100x100")%>
+				</div>
+			</td>
+			<td>
+          		<%= link_to "Add to Cart", order_items_path(:product_id => product.id),
+		          :remote => true,
+		          :method => :post,
+		          :class => "btn btn-success" %>
+			</td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>
+
+	
 
 <%= link_to 'Edit', edit_category_path(@category), :class => 'btn' %> |
 <%= link_to 'Back', categories_path, :class => 'btn' %>
