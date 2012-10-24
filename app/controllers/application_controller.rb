@@ -2,8 +2,10 @@ class ApplicationController < ActionController::Base
   include ControllerAuthentication
   protect_from_forgery
   
+  rescue_from ActiveRecord::RecordNotFound, :with => :rescue_not_found
+
   before_filter :lookup_order
-  
+
   # This is to enable those methods are avariable for all views
   helper_method :admin_authorize
   helper_method :admin?
@@ -17,6 +19,12 @@ class ApplicationController < ActionController::Base
         session[:order_id] = @order.id
       end
 
+  end
+
+  protected
+  
+  def rescue_not_found
+    render :template => 'shared/exception', :status => :not_found
   end
 
   private
